@@ -12,6 +12,7 @@ services:
       - ./minecraft-data/proxy/:/data
     restart: unless-stopped
     stdin_open: true
+    tty: true
   mc:
     image: itzg/minecraft-server
     ports:
@@ -22,10 +23,12 @@ services:
       EULA: "TRUE"
       MOTD: "server1"
       MEMORY: "3G"
+      EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server1/:/data
     restart: unless-stopped
     stdin_open: true
+    tty: true
   mc2:
     image: itzg/minecraft-server
     ports:
@@ -36,7 +39,9 @@ services:
       EULA: "TRUE"
       MOTD: "server2"
       MEMORY: "3G"
+      EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server2:/data
     restart: unless-stopped
     stdin_open: true
+    tty: true
