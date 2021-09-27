@@ -51,24 +51,18 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
   }
   # Copy the files to the proxy
   provisioner "file" {
-    source      = "images/dedsafio-proxy/"
-    destination = "/home/minecraft/minecraft-data/proxy"
-  }
-  # Copy the files to the server1
-  provisioner "file" {
-    source      = "images/dedsafio-server/"
-    destination = "/home/minecraft/minecraft-data/server1"
-  }
-  # Copy the files to the server2
-  provisioner "file" {
-    source      = "images/dedsafio-server/"
-    destination = "/home/minecraft/minecraft-data/server2"
+    source      = "images"
+    destination = "/home/minecraft/"
   }
   # Run the docker-compose command
   provisioner "remote-exec" {
     inline = [
       # Change directories to the /home/minecraft directory
       "cd /home/minecraft",
+      # Copy the contents of the images folder to the respective server folder
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server1/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server2/",
+      "cp -r images/dedsafio-proxy/* /home/minecraft/minecraft-data/proxy/",
       # Start the docker-compose process
       "docker-compose up -d",
     ]
