@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  proxy:
+    image: cubxity/minecraft-proxy:velocity-adopt16
+    ports:
+      - "25565:25577"
+    environment:
+      INIT_MEMORY: "512M"
+      MAX_MEMORY: "2G"
+    volumes:
+      - ./minecraft-data/proxy/:/data
+    restart: unless-stopped
+    stdin_open: true
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - "25564:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
+      MOTD: "server1"
+      MEMORY: "3G"
+    volumes:
+      - ./minecraft-data/server1/:/data
+    restart: unless-stopped
+    stdin_open: true
+  mc2:
+    image: itzg/minecraft-server
+    ports:
+      - "25563:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
+      MOTD: "server2"
+      MEMORY: "3G"
+    volumes:
+      - ./minecraft-data/server2:/data
+    restart: unless-stopped
+    stdin_open: true

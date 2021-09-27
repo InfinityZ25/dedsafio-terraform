@@ -44,9 +44,7 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
       "mkdir /home/minecraft",
       "cd /home/minecraft",
       # Create all the directories and make them accessible for any user.
-      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/server1 minecraft-data/server2",
-      # Obtain the docker-compose file
-      "wget https://gist.githubusercontent.com/InfinityZ25/cf2c7bc880a702af565032582b481c47/raw/7e21d68d8f8b158ed6b162b07f87558a8f91f906/docker-compose.yml",
+      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/server1 minecraft-data/server2"
     ]
   }
   # Copy the files to the proxy
@@ -63,6 +61,8 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server1/",
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server2/",
       "cp -r images/dedsafio-proxy/* /home/minecraft/minecraft-data/proxy/",
+      # Move the docker-compose file to the /home/minecraft directory
+      "mv images/docker-compose.yml /home/minecraft/",
       # Start the docker-compose process
       "docker-compose up -d",
     ]
