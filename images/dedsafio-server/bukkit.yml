@@ -1,0 +1,2 @@
+settings:
+  allow-end: false # Disable end for faster deployment
