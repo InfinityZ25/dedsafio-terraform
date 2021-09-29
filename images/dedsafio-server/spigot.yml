@@ -1,0 +1,22 @@
+settings:
+  save-user-cache-on-stop-only: true
+world-settings:
+  default:
+    mob-spawn-range: 3
+    arrow-despawn-rate: 300
+    enable-zombie-pigmen-portal-spawns: false
+    merge-radius:
+      item: 4.0
+      exp: 6.0
+    entity-activation-range:
+      animals: 16
+      monsters: 24
+      raiders: 48
+      misc: 8
+      water: 8
+    entity-tracking-range:
+      players: 64
+      animals: 48
+      monsters: 48
+      misc: 32
+      other: 64

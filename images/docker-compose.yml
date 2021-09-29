@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
-  mc:
+  lobby:
     image: itzg/minecraft-server
     ports:
       - "25564:25565"
@@ -21,8 +21,24 @@ services:
       TYPE: "PURPUR"
       VERSION: "1.16.5"
       EULA: "TRUE"
+      MOTD: "lobby"
+      MEMORY: "6G"
+      EXEC_DIRECTLY: "TRUE"
+    volumes:
+      - ./minecraft-data/server1/:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - "25563:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
       MOTD: "server1"
-      MEMORY: "3G"
+      MEMORY: "8G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server1/:/data
@@ -32,16 +48,33 @@ services:
   mc2:
     image: itzg/minecraft-server
     ports:
-      - "25563:25565"
+      - "25562:25565"
     environment:
       TYPE: "PURPUR"
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server2"
-      MEMORY: "3G"
+      MEMORY: "8G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server2:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
+  mc3:
+    image: itzg/minecraft-server
+    ports:
+      - "25561:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
+      MOTD: "server3"
+      MEMORY: "8G"
+      EXEC_DIRECTLY: "TRUE"
+    volumes:
+      - ./minecraft-data/server2:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+  

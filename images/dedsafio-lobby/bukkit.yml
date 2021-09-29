@@ -1,0 +1,23 @@
+settings:
+  allow-end: false
+  connection-throttle: 2000
+spawn-limits:
+  monsters: 0
+  animals: 0
+  water-animals: 0
+  water-ambient: 0
+  ambient: 0
+chunk-gc:
+  period-in-ticks: 100
+ticks-per:
+  animal-spawns: 4
+  monster-spawns: 4
+  water-spawns: 1
+  water-ambient-spawns: 1
+  ambient-spawns: 1
+  autosave: 6000
+worlds:
+  world:
+    generator: VoidGen:{"biome":"THE_VOID","environment":"THE_END"}
+  lobby:
+    generator: VoidGen:{"biome":"THE_VOID","environment":"THE_END"}

@@ -18,7 +18,7 @@ provider "digitalocean" {
 }
 # Get ssh key
 data "digitalocean_ssh_key" "terraform" {
-  name = "jcedeno_mbpro"
+  name = "ale_windows"
 }
 
 # Deploy the droplet
@@ -26,7 +26,7 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
   image      = "docker-20-04"
   name       = "dedsafio-droplet"
   region     = "nyc3"
-  size       = "s-4vcpu-8gb-amd"
+  size       = "s-8vcpu-16gb-amd"
   ssh_keys   = [data.digitalocean_ssh_key.terraform.id]
   monitoring = true
 

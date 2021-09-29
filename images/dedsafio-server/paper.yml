@@ -3,3 +3,38 @@ settings:
     enabled: true
     online-mode: true
     secret: "ZJnI3bEYn1D6"
+  async-chunks:
+    enable: true
+    threads: -1
+world-settings:
+  default:
+    keep-spawn-loaded: false
+    optimize-explosions: true 
+    mob-spawner-tick-rate: 2 
+    container-update-tick-rate: 3 
+    disable-teleportation-suffocation-check: true
+    non-player-arrow-despawn-rate: 60 
+    creative-arrow-despawn-rate: 60 
+    fixed-chunk-inhabited-time: -1
+    grass-spread-tick-rate: 4 
+    max-entity-collisions: 2 
+    prevent-moving-into-unloaded-chunks: true 
+    max-auto-save-chunks-per-tick: 6 
+    per-player-mob-spawns: true 
+    use-faster-eigencraft-redstone: true 
+    despawn-ranges:
+      soft: 32
+      hard: 64
+    game-mechanics:
+      disable-pillager-patrols: true 
+    anti-xray:
+      enabled: false
+      engine-mode: 0
+      replacement-blocks:
+      - stone 
+    alt-item-despawn-rate:
+      enabled: true 
+    viewdistances:
+      no-tick-view-distance: 10
+  lobby:
+    keep-spawn-loaded: true
