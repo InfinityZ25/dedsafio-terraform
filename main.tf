@@ -1,44 +1,45 @@
 # Register providers
 terraform {
   required_providers {
-    digitalocean = {
-      source  = "digitalocean/digitalocean"
-      version = "2.10.1"
+    vultr = {
+      source  = "vultr/vultr"
+      version = "2.4.2"
     }
   }
 }
-# use -var="do_token=$HOME/.tokens/do_token" with terraform command to set the token
-variable "do_token" {}
+# use -var="do_token=$HOME/.tokens/vultr_api_token" with terraform command to set the token
+variable "vultr_api_token" {}
 # use -var="private_key=$HOME/.ssh/id_rsa" to pass down a private key for the ssh connection
 variable "private_key" {}
 
-# Configure the DigitalOcean Provider
-provider "digitalocean" {
-  token = var.do_token
+# Configure the Vultr Provider
+provider "vultr" {
+  token = var.vultr_api_token
 }
 # Get ssh key
-data "digitalocean_ssh_key" "aleKey" {
-  name = "ale_windows"
-}
-data "digitalocean_ssh_key" "jcedenoKey" {
-  name = "jcedeno_mbpro"
+data "vultr_ssh_key" "sshKey" {
+  filter {
+    name = "name"
+    # Name of your ssh key in Vultr
+    values = ["Juan Cedeno"]
+  }
 }
 
 # Deploy the droplet
-resource "digitalocean_droplet" "dedsafio-droplet" {
-  image      = "docker-20-04"
-  name       = "dedsafio-droplet"
-  region     = "nyc3"
-  size       = "s-8vcpu-16gb-amd"
-  ssh_keys   = [data.digitalocean_ssh_key.aleKey.id, data.digitalocean_ssh_key.jcedenoKey.id]
-  monitoring = true
+resource "vultr_instance" "dedsafio-droplet" {
+  plan        = "vdc-8vcpu-32gb" # Dedicated 8vcpu 32gb ram
+  app_id      = "37"             # Docker on Ubuntu 20.04
+  region      = "ewr"            # NYC/NJ region
+  hostname    = "dedsafio"
+  label       = "dedsafioBingo" # Label in Vultr
+  ssh_key_ids = [data.vultr_ssh_key.sshKey.id]
 
   connection {
-    host        = self.ipv4_address
+    host        = self.main_ip
     user        = "root"
     type        = "ssh"
     private_key = file(var.private_key)
-    timeout     = "2m"
+    timeout     = "3m"
   }
   # Create the folders for the deployment 
   provisioner "remote-exec" {

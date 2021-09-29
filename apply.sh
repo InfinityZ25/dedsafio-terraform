@@ -1,5 +1,5 @@
 #!/bin/bash
 # Obtain the token from the environment
-do_token=$(cat $HOME/.tokens/do_token)
+vultr_api_token=$(cat $HOME/.tokens/vultr_api_token)
 # Apply the command
-terraform apply -var="do_token=$do_token" -var "private_key=$HOME/.ssh/id_rsa"
+terraform apply -var="vultr_api_token=$vultr_api_token" -var "private_key=$HOME/.ssh/id_rsa"
