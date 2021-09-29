@@ -25,11 +25,11 @@ services:
       MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server1/:/data
+      - ./minecraft-data/lobby/:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
-  mc:
+  sv1:
     image: itzg/minecraft-server
     ports:
       - "25563:25565"
@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
-  mc2:
+  sv2:
     image: itzg/minecraft-server
     ports:
       - "25562:25565"
@@ -61,7 +61,7 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
-  mc3:
+  sv3:
     image: itzg/minecraft-server
     ports:
       - "25561:25565"
@@ -73,7 +73,7 @@ services:
       MEMORY: "8G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server2:/data
+      - ./minecraft-data/server3:/data
     restart: unless-stopped
     stdin_open: true
     tty: true

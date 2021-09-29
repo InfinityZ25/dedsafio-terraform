@@ -17,8 +17,11 @@ provider "digitalocean" {
   token = var.do_token
 }
 # Get ssh key
-data "digitalocean_ssh_key" "terraform" {
+data "digitalocean_ssh_key" "aleKey" {
   name = "ale_windows"
+}
+data "digitalocean_ssh_key" "jcedenoKey" {
+  name = "jcedeno_mbpro"
 }
 
 # Deploy the droplet
@@ -27,7 +30,7 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
   name       = "dedsafio-droplet"
   region     = "nyc3"
   size       = "s-8vcpu-16gb-amd"
-  ssh_keys   = [data.digitalocean_ssh_key.terraform.id]
+  ssh_keys   = [data.digitalocean_ssh_key.aleKey.id, data.digitalocean_ssh_key.jcedenoKey.id]
   monitoring = true
 
   connection {
@@ -44,7 +47,7 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
       "mkdir /home/minecraft",
       "cd /home/minecraft",
       # Create all the directories and make them accessible for any user.
-      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/server1 minecraft-data/server2"
+      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/server1 minecraft-data/server2 minecraft-data/server3"
     ]
   }
   # Copy the files to the proxy
@@ -60,6 +63,8 @@ resource "digitalocean_droplet" "dedsafio-droplet" {
       # Copy the contents of the images folder to the respective server folder
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server1/",
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server2/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server3/",
+      "cp -r images/dedsafio-lobby/* /home/minecraft/minecraft-data/lobby/",
       "cp -r images/dedsafio-proxy/* /home/minecraft/minecraft-data/proxy/",
       # Move the docker-compose file to the /home/minecraft directory
       "mv images/docker-compose.yml /home/minecraft/",
