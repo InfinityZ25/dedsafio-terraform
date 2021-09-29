@@ -22,7 +22,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "lobby"
-      MEMORY: "2G"
+      MEMORY: "4G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/lobby/:/data
@@ -38,7 +38,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server1"
-      MEMORY: "3G"
+      MEMORY: "8G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server1/:/data
@@ -54,7 +54,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server2"
-      MEMORY: "3G"
+      MEMORY: "8G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server2:/data
@@ -70,7 +70,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server3"
-      MEMORY: "3G"
+      MEMORY: "8G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server3:/data

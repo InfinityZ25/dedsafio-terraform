@@ -21,7 +21,7 @@ data "vultr_ssh_key" "sshKey" {
   filter {
     name = "name"
     # Name of your ssh key in Vultr
-    values = ["Juan Cedeno"]
+    values = ["mac-jc"]
   }
 }
 
@@ -48,7 +48,9 @@ resource "vultr_instance" "dedsafio-droplet" {
       "mkdir /home/minecraft",
       "cd /home/minecraft",
       # Create all the directories and make them accessible for any user.
-      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/server1 minecraft-data/server2 minecraft-data/server3"
+      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/server1 minecraft-data/server2 minecraft-data/server3",
+      # Open ports
+      "ufw allow 25560:25565/tcp"
     ]
   }
   # Copy the files to the proxy
