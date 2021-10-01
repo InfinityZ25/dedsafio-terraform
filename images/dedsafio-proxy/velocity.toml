@@ -35,7 +35,7 @@ forwarding-secret = "ZJnI3bEYn1D6"
         sv5 = "sv5"
         lobby = "lobby"
         # In what order we should try servers when a player logs in or is kicked from a server.
-        try = ["lobby", "sv1", "sv2", "sv3", "sv4", "sv5"]
+        try = ["lobby"]
 
 [forced-hosts]
         # Configure your forced hosts here.
