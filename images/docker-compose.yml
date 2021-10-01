@@ -38,7 +38,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server1"
-      MEMORY: "10G"
+      MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server1/:/data
