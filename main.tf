@@ -55,9 +55,9 @@ resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, chan
       "mkdir /home/minecraft",
       "cd /home/minecraft",
       # Create all the directories and make them accessible for any user.
-      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/server1 minecraft-data/server2 minecraft-data/server3 minecraft-data/server4 minecraft-data/server5",
+      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/server1 minecraft-data/server2 minecraft-data/server3 minecraft-data/server4 minecraft-data/server5 minecraft-data/server6",
       # Open ports
-      "ufw allow 25559:25565/tcp"
+      "ufw allow 25558:25565/tcp"
     ]
   }
   # Copy the files to the proxy
@@ -76,6 +76,7 @@ resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, chan
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server3/",
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server4/",
       "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server5/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server6/",
       "cp -r images/dedsafio-lobby/* /home/minecraft/minecraft-data/lobby/",
       "cp -r images/dedsafio-proxy/* /home/minecraft/minecraft-data/proxy/",
       # Move the docker-compose file to the /home/minecraft directory

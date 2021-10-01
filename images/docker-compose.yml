@@ -109,3 +109,19 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+  sv6:
+    image: itzg/minecraft-server
+    ports:
+      - "25558:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
+      MOTD: "server5"
+      MEMORY: "16G"
+      EXEC_DIRECTLY: "TRUE"
+    volumes:
+      - ./minecraft-data/server6:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
