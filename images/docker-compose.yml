@@ -54,7 +54,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server2"
-      MEMORY: "10G"
+      MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server2:/data
@@ -70,10 +70,42 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server3"
-      MEMORY: "10G"
+      MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/server3:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+  sv4:
+    image: itzg/minecraft-server
+    ports:
+      - "25560:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
+      MOTD: "server4"
+      MEMORY: "16G"
+      EXEC_DIRECTLY: "TRUE"
+    volumes:
+      - ./minecraft-data/server4:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+  sv5:
+    image: itzg/minecraft-server
+    ports:
+      - "25559:25565"
+    environment:
+      TYPE: "PURPUR"
+      VERSION: "1.16.5"
+      EULA: "TRUE"
+      MOTD: "server5"
+      MEMORY: "16G"
+      EXEC_DIRECTLY: "TRUE"
+    volumes:
+      - ./minecraft-data/server5:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
