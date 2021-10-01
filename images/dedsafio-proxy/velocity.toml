@@ -33,6 +33,7 @@ forwarding-secret = "ZJnI3bEYn1D6"
         sv3 = "sv3"
         sv4 = "sv4"
         sv5 = "sv5"
+        sv6 = "sv6"
         lobby = "lobby"
         # In what order we should try servers when a player logs in or is kicked from a server.
         try = ["lobby"]
