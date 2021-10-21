@@ -51,7 +51,7 @@ services:
       MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server1/:/data
+      - ./minecraft-data/sv1/:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -67,7 +67,7 @@ services:
       MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server2:/data
+      - ./minecraft-data/sv2:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -83,7 +83,7 @@ services:
       MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server3:/data
+      - ./minecraft-data/sv3:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -99,7 +99,7 @@ services:
       MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server4:/data
+      - ./minecraft-data/sv4:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -115,7 +115,7 @@ services:
       MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server5:/data
+      - ./minecraft-data/sv5:/data
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -131,7 +131,7 @@ services:
       MEMORY: "16G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
-      - ./minecraft-data/server6:/data
+      - ./minecraft-data/sv6:/data
     restart: unless-stopped
     stdin_open: true
     tty: true

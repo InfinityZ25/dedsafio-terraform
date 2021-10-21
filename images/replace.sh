@@ -3,7 +3,7 @@
 # Define some variables
 world_file="$1"
 world_nether_file="$2"
-pattern="server"
+pattern="sv"
 containers="minecraft_sv1_1 minecraft_sv2_1 minecraft_sv3_1 minecraft_sv4_1 minecraft_sv5_1 minecraft_sv6_1"
 
 echo "Creating temp directory to decompress files"
