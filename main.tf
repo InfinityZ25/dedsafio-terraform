@@ -31,6 +31,14 @@ data "vultr_ssh_key" "aleSSH" {
     values = ["ale"]
   }
 }
+data "vultr_ssh_key" "jcedenoMac" {
+  filter {
+    name = "name"
+    # Name of your ssh key in Vultr
+    values = ["mac-jc"]
+  }
+}
+
 
 # Deploy the droplet
 resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, change vultr_instance to vultr_baremetal_instance
@@ -39,7 +47,7 @@ resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, chan
   region      = "ewr"                          # NYC/NJ region
   hostname    = "dedsafio"
   label       = "dedsafioBingo" # Label in Vultr
-  ssh_key_ids = [data.vultr_ssh_key.jcedenoSSH.id, data.vultr_ssh_key.aleSSH.id]
+  ssh_key_ids = [data.vultr_ssh_key.jcedenoMac.id, data.vultr_ssh_key.jcedenoSSH.id, data.vultr_ssh_key.aleSSH.id]
 
   connection {
     host        = self.main_ip
