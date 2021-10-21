@@ -33,10 +33,10 @@ data "vultr_ssh_key" "aleSSH" {
 }
 
 # Deploy the droplet
-resource "vultr_instance" "dedsafio-droplet" { # To use baremetal, change vultr_instance to vultr_baremetal_instance
-  plan        = "vhf-12c-48gb"                 # Dedicated 8vcpu 32gb ram, change to vbm-8c-132gb to use baremetal
+resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, change vultr_instance to vultr_baremetal_instance
+  plan        = "vbm-8c-132gb"                 # Dedicated 8vcpu 32gb ram, change to vbm-8c-132gb to use baremetal
   app_id      = "37"                           # Docker on Ubuntu 20.04
-  region      = "atl"                          # NYC/NJ region
+  region      = "ewr"                          # NYC/NJ region
   hostname    = "dedsafio"
   label       = "dedsafioBingo" # Label in Vultr
   ssh_key_ids = [data.vultr_ssh_key.jcedenoSSH.id, data.vultr_ssh_key.aleSSH.id]
