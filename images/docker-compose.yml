@@ -17,9 +17,9 @@ services:
     environment:
       TYPE: "VELOCITY"
       INIT_MEMORY: "512M"
-      MAX_MEMORY: "8G"
+      MAX_MEMORY: "2G"
     volumes:
-      - ./minecraft-data/proxy/:/data
+      - ./minecraft-data/proxy/:/server
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -32,7 +32,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "lobby"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/lobby/:/data
@@ -48,7 +48,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server1"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/sv1/:/data
@@ -64,7 +64,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server2"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/sv2:/data
@@ -80,7 +80,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server3"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/sv3:/data
@@ -96,7 +96,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server4"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/sv4:/data
@@ -112,7 +112,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server5"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/sv5:/data
@@ -128,7 +128,7 @@ services:
       VERSION: "1.16.5"
       EULA: "TRUE"
       MOTD: "server5"
-      MEMORY: "16G"
+      MEMORY: "6G"
       EXEC_DIRECTLY: "TRUE"
     volumes:
       - ./minecraft-data/sv6:/data

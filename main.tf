@@ -33,10 +33,10 @@ data "vultr_ssh_key" "aleSSH" {
 }
 
 # Deploy the droplet
-resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, change vultr_instance to vultr_baremetal_instance
-  plan        = "vbm-8c-132gb"                          # Dedicated 8vcpu 32gb ram, change to vbm-8c-132gb to use baremetal
-  app_id      = "37"                                    # Docker on Ubuntu 20.04
-  region      = "ewr"                                   # NYC/NJ region
+resource "vultr_instance" "dedsafio-droplet" { # To use baremetal, change vultr_instance to vultr_baremetal_instance
+  plan        = "vhf-12c-48gb"                 # Dedicated 8vcpu 32gb ram, change to vbm-8c-132gb to use baremetal
+  app_id      = "37"                           # Docker on Ubuntu 20.04
+  region      = "atl"                          # NYC/NJ region
   hostname    = "dedsafio"
   label       = "dedsafioBingo" # Label in Vultr
   ssh_key_ids = [data.vultr_ssh_key.jcedenoSSH.id, data.vultr_ssh_key.aleSSH.id]
@@ -55,7 +55,7 @@ resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, chan
       "mkdir /home/minecraft",
       "cd /home/minecraft",
       # Create all the directories and make them accessible for any user.
-      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/server1 minecraft-data/server2 minecraft-data/server3 minecraft-data/server4 minecraft-data/server5 minecraft-data/server6",
+      "mkdir -m 777 -p minecraft-data/proxy minecraft-data/lobby minecraft-data/sv1 minecraft-data/sv2 minecraft-data/sv3 minecraft-data/sv4 minecraft-data/sv5 minecraft-data/sv6",
       # Open ports
       "ufw allow 25558:25565/tcp"
     ]
@@ -71,12 +71,12 @@ resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, chan
       # Change directories to the /home/minecraft directory
       "cd /home/minecraft",
       # Copy the contents of the images folder to the respective server folder
-      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server1/",
-      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server2/",
-      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server3/",
-      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server4/",
-      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server5/",
-      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/server6/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/sv1/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/sv2/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/sv3/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/sv4/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/sv5/",
+      "cp -r images/dedsafio-server/* /home/minecraft/minecraft-data/sv6/",
       "cp -r images/dedsafio-lobby/* /home/minecraft/minecraft-data/lobby/",
       "cp -r images/dedsafio-proxy/* /home/minecraft/minecraft-data/proxy/",
       # Move the docker-compose file to the /home/minecraft directory
