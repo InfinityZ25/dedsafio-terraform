@@ -81,6 +81,8 @@ resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, chan
       "cp -r images/dedsafio-proxy/* /home/minecraft/minecraft-data/proxy/",
       # Move the docker-compose file to the /home/minecraft directory
       "mv images/docker-compose.yml /home/minecraft/",
+      # Move the replace world scriipto into the /home/minecraft dir
+      "mv images/replace.sh /home/minecraft/",
       #Change all permissions to 777 to ensure that the files are accessible for any user
       "chmod -R 777 *",
       # Start the docker-compose process
