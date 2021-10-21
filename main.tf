@@ -21,7 +21,7 @@ data "vultr_ssh_key" "jcedenoSSH" {
   filter {
     name = "name"
     # Name of your ssh key in Vultr
-    values = ["mac-jc"]
+    values = ["m1-mini"]
   }
 }
 data "vultr_ssh_key" "aleSSH" {

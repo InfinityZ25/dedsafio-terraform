@@ -11,7 +11,7 @@ services:
       - REDIS_PASSWORD=redis
     restart: unless-stopped
   proxy:
-    image: cubxity/minecraft-proxy
+    image: itzg/bungeecord
     ports:
       - "25565:25577"
     environment:
