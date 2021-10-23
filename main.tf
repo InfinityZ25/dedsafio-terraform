@@ -14,7 +14,8 @@ variable "private_key" {}
 
 # Configure the Vultr Provider
 provider "vultr" {
-  token = var.vultr_api_token
+  api_key = var.vultr_api_token
+
 }
 # Get ssh key
 data "vultr_ssh_key" "jcedenoSSH" {
@@ -42,9 +43,9 @@ data "vultr_ssh_key" "jcedenoMac" {
 
 # Deploy the droplet
 resource "vultr_bare_metal_server" "dedsafio-droplet" { # To use baremetal, change vultr_instance to vultr_baremetal_instance
-  plan        = "vbm-8c-132gb"                 # Dedicated 8vcpu 32gb ram, change to vbm-8c-132gb to use baremetal
-  app_id      = "37"                           # Docker on Ubuntu 20.04
-  region      = "ewr"                          # NYC/NJ region
+  plan        = "vbm-8c-132gb"                          # Dedicated 8vcpu 32gb ram, change to vbm-8c-132gb to use baremetal
+  app_id      = "37"                                    # Docker on Ubuntu 20.04
+  region      = "ewr"                                   # NYC/NJ region
   hostname    = "dedsafio"
   label       = "dedsafioBingo" # Label in Vultr
   ssh_key_ids = [data.vultr_ssh_key.jcedenoMac.id, data.vultr_ssh_key.jcedenoSSH.id, data.vultr_ssh_key.aleSSH.id]
